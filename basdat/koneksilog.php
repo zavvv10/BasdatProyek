@@ -1,6 +1,6 @@
 <?php
 $servername = "localhost";
-$database = "order_db";
+$database = "baru_db";
 $username = "root";
 $password = "";
 

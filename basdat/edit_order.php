@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: http://localhost/basdat/index.html");
 }
 
-$koneksi = mysqli_connect("localhost", "root", "", "order_db");
+$koneksi = mysqli_connect("localhost", "root", "", "baru_db");
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -16,9 +16,9 @@ if (isset($_GET['id'])) {
 
     if ($result_get_order && mysqli_num_rows($result_get_order) > 0) {
         $row = mysqli_fetch_assoc($result_get_order);
-        $nama = $row['Nama'];
+        $nama = $row['nama'];
         $alamat = $row['alamat'];
-        $No_HP = $row['no_HP'];
+        $No_HP = $row['No_HP'];
         $item_name = $row['item_name'];
     } else {
         echo "Pesanan tidak ditemukan.";
@@ -41,6 +41,14 @@ if (isset($_POST['edit_submit'])) {
 
     if (mysqli_query($koneksi, $query_update_order)) {
         echo "Pesanan berhasil diupdate!";
+        echo '<script>
+        function redirectToOrders() {
+            window.location.href = "http://localhost/basdat/list_order.php";
+        }
+        setTimeout(function() {
+            redirectToOrders();
+        }, 2000);
+</script>';
     } else {
         echo "Error: " . $query_update_order . "<br>" . mysqli_error($koneksi);
     }
@@ -54,6 +62,7 @@ if (isset($_POST['edit_submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Pesanan</title>
+    <link rel="stylesheet" href="edit_order.css">
 </head>
 
 <body>

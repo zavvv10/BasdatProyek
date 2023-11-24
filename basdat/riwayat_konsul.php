@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: http://localhost/basdat/index.html");
 }
 
-$koneksi = mysqli_connect("localhost", "root", "", "order_db");
+$koneksi = mysqli_connect("localhost", "root", "", "baru_db");
 
 $user_id = $_SESSION['user_id'];
 
@@ -21,6 +21,8 @@ $result_current_consultations = mysqli_query($koneksi, $query_current_consultati
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Konsultasi</title>
+    <link rel="stylesheet" href="riwayat_konsul.css">
+
 </head>
 
 <body>
@@ -43,8 +45,8 @@ $result_current_consultations = mysqli_query($koneksi, $query_current_consultati
                 
                 <!-- Tombol Menuju Dashboard -->
                 <td>
-                    <form action="dashboard.php" method="get">
-                        <button type="submit" style="background-color: #008CBA; color: white; border: none; padding: 5px 10px; cursor: pointer;">Dashboard</button>
+                    <form action="homepage/home1.php" method="get">
+                        <button type="submit" style="background-color: #008CBA; color: white; border: none; padding: 5px 10px; cursor: pointer;">Home</button>
                     </form>
                 </td>
             </tr>

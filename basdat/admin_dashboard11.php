@@ -47,19 +47,22 @@ $email = $_SESSION['email'];
 </head>
 
 <body>
-    <div class="container">
-    <h1>Admin</h1>
-        <div class="navbar">
-            <ul>
-                <li><a onclick="redirectToOrders()">Daftar Pesanan</a></li>
-                <li><a onclick="redirectToConsultationHistory()">Riwayat Konsultasi</a></li>
-                <li><a onclick="logout()">Logout</a></li>
-            </ul>
-    </div>
-    <div class="content">
-        <h1>Selamat Datang di Halaman Utama, <?php echo $email; ?>!</h1>
-    </div>
-    </div>
+
+    <h1>Selamat Datang di Halaman Utama, <?php echo $email; ?>!</h1>
+
+    <!-- Tombol untuk menuju ke halaman form
+    <button onclick="redirectToForm('order')">Pesan sekarang!</button>
+    <button onclick="redirectToForm('konsultasi')">Konsul sekarang!</button> -->
+
+    <!-- Tombol untuk menuju ke halaman daftar pesanan -->
+    <button onclick="redirectToOrders()">Daftar Pesanan</button>
+
+    <!-- Tombol untuk menuju ke halaman riwayat konsultasi -->
+    <button onclick="redirectToConsultationHistory()">Riwayat Konsultasi</button>
+
+    <!-- Tombol untuk logout -->
+    <button onclick="logout()">Logout</button>
+
 </body>
 
 </html>

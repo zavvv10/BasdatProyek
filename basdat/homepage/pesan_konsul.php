@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="/homepage/pesan_konsul.css">
+    <link rel="stylesheet" href="pesan_konsul.css">
     <title>Hi-Phone Website - Register</title>
 </head>
 
@@ -11,10 +12,11 @@
     <div class="content">
     <h1>Form Pemesanan</h1>
 <br>
-<h1>Form pemesanan</h1>
-<br>
+<form method="post" action="/basdat/input_konsul.php">
 
-<form method="post" action="input_konsul.php">
+
+
+
     <div syle="padding : 30px">
         <table cellpadding=5 cellspacing=0>
             <tr>
@@ -36,5 +38,10 @@
           
         </table>
     </div>
+    </div>
+</div>
 </form>
 <!-- <input type="submit" value="Daftar" name="daftar" /> -->
+</body>
+
+</html>

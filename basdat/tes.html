@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <title>Data Table</title>
+</head>
+<body>
+
+
+<table>
+    <tr>
+        <?php foreach ($database_data[0] as $header) : ?>
+            <th><?php echo $header; ?></th>
+        <?php endforeach; ?>
+    </tr>
+
+    <?php for ($i = 1; $i < count($database_data); $i++) : ?>
+        <tr>
+            <?php foreach ($database_data[$i] as $cell) : ?>
+                <td><?php echo $cell; ?></td>
+            <?php endforeach; ?>
+        </tr>
+    <?php endfor; ?>
+</table>
+
+</body>
+</html>

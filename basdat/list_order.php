@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: http://localhost/basdat/index.html");
 }
 
-$koneksi = mysqli_connect("localhost", "root", "", "order_db");
+$koneksi = mysqli_connect("localhost", "root", "", "baru_db");
 
 $user_id = $_SESSION['user_id'];
 
@@ -21,10 +21,11 @@ $result_current_orders = mysqli_query($koneksi, $query_current_orders);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pesanan</title>
+    <link rel="stylesheet" href="list_order.css">
 </head>
 
 <body>
-    <h1><form action="dashboard.php" method="get">
+    <h1><form action="homepage/home1.php" method="get">
                         <button type="submit" style="background-color: #008CBA; color: white; border: none; padding: 5px 10px; cursor: pointer;">Dashboard</button>
                     </form>
                 </h1>
@@ -41,9 +42,9 @@ $result_current_orders = mysqli_query($koneksi, $query_current_orders);
         <?php while ($row = mysqli_fetch_assoc($result_current_orders)) { ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['Nama']; ?></td>
+                <td><?php echo $row['nama']; ?></td>
                 <td><?php echo $row['alamat']; ?></td>
-                <td><?php echo $row['no_HP']; ?></td>
+                <td><?php echo $row['No_HP']; ?></td>
                 <td><?php echo $row['item_name']; ?></td>
                 <td><?php echo $row['status']; ?></td>
 

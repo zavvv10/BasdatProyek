@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: http://localhost/basdat/index.html");
 }
 
-$koneksi = mysqli_connect("localhost", "root", "", "order_db");
+$koneksi = mysqli_connect("localhost", "root", "", "baru_db");
 
 if (isset($_POST["tblsubmit"])) {
     // Pastikan nama input sesuai dengan formulir HTML
@@ -29,9 +29,12 @@ if (isset($_POST["tblsubmit"])) {
                     function redirectToOrders() {
                         window.location.href = "http://localhost/basdat/list_order.php";
                     }
+                    setTimeout(function() {
+                        redirectToOrders();
+                    }, 2000);
                   </script>';
                   
-            echo '<td><button type="button" name="tblstatus" onclick="redirectToOrders()">Cek Status Pesanan</button></td>';
+            // echo '<td><button type="button" name="tblstatus" onclick="redirectToOrders()">Cek Status Pesanan</button></td>';
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
         }

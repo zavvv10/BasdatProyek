@@ -1,5 +1,5 @@
 <?php
-$koneksikon = mysqli_connect("localhost", "root", "", "order_db");
+$koneksikon = mysqli_connect("localhost", "root", "", "baru_db");
 
 // Periksa apakah parameter ID tersedia di URL
 if (isset($_GET['id'])) {

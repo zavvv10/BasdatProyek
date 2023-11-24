@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: http://localhost/basdat/index.html");
 }
 
-$koneksi = mysqli_connect("localhost", "root", "", "order_db");
+$koneksi = mysqli_connect("localhost", "root", "", "baru_db");
 
 $user_id = $_SESSION['user_id'];
 $is_admin = false; // Tambahkan variabel is_admin
@@ -37,18 +37,60 @@ $result_all_orders = mysqli_query($koneksi, $query_all_orders);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pesanan</title>
+    <link rel="stylesheet" href="admin_listorder.css">
+    <script>
+        // function redirectToForm(formType) {
+        //     // Ganti dengan URL ke halaman form yang sesuai
+        //     if (formType === 'order') {
+        //         window.location.href = "http://localhost/basdat/form_order.php";
+        //     } else if (formType === 'konsultasi') {
+        //         window.location.href = "http://localhost/basdat/form_konsultasi.php";
+        //     }
+        // }
+
+        function redirectToOrders() {
+            // Ganti dengan URL ke halaman daftar pesanan
+            window.location.href = "http://localhost/basdat/admin_listorder.php";
+        }
+
+        function redirectToConsultationHistory() {
+            // Ganti dengan URL ke halaman riwayat konsultasi
+            window.location.href = "http://localhost/basdat/admin_riwayat.php";
+        }
+
+        function logout() {
+            // Redirect ke halaman logout
+            window.location.href = "http://localhost/basdat/logout.php";
+        }
+    </script>
 </head>
 
 <body>
+<body>
+    <div class="container">
+    <h1>Admin</h1>
+        <div class="navbar">
+            <ul>
+            <li><a onclick="redirectToOrders()">Daftar Pesanan</a></li>
+                <li><a onclick="redirectToConsultationHistory()">Riwayat Konsultasi</a></li>
+                <li><a onclick="logout()">Logout</a></li>
+            </ul>
+    </div>
+    <div class="content">
     <h1>
         <form action="admin_dashboard.php" method="get">
             <button type="submit" style="background-color: #008CBA; color: white; border: none; padding: 5px 10px; cursor: pointer;">Dashboard</button>
         </form>
     </h1>
+    <div class=content1>
     <h2>Daftar Pesanan</h2>
+    </div>
+    <div class="contents">
+    
     <table border="1">
         <tr>
-            <th>Id</th>
+            <th>User ID</th>
+            <th>Order Id</th>
             <th>Nama</th>
             <th>Alamat</th>
             <th>No. HP</th>
@@ -57,10 +99,11 @@ $result_all_orders = mysqli_query($koneksi, $query_all_orders);
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result_all_orders)) { ?>
             <tr>
+                <td><?php echo $row['user_id']; ?></td>
                 <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['Nama']; ?></td>
+                <td><?php echo $row['nama']; ?></td>
                 <td><?php echo $row['alamat']; ?></td>
-                <td><?php echo $row['no_HP']; ?></td>
+                <td><?php echo $row['No_HP']; ?></td>
                 <td><?php echo $row['item_name']; ?></td>
                 <td><?php echo $row['status']; ?></td>
                 <td>
@@ -72,7 +115,7 @@ $result_all_orders = mysqli_query($koneksi, $query_all_orders);
                 </td>
                 <td>
                     <!-- Tombol Delete -->
-                    <form action="delete_order.php" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pesanan ini?')">
+                    <form action="admin_deleteorder.php" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pesanan ini?')">
                         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                         <button type="submit" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer;">Delete</button>
                     </form>
@@ -80,6 +123,8 @@ $result_all_orders = mysqli_query($koneksi, $query_all_orders);
             </tr>
         <?php } ?>
     </table>
+    </div>
+        </div>
 </body>
 
 </html>

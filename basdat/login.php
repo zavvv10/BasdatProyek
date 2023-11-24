@@ -37,9 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user_data['role'] == 'admin') {
             // Redirect ke halaman admin dashboard
             header("Location: http://localhost/basdat/admin_dashboard.php");
+            // ubah direct ke home1html
         } else {
             // Redirect ke halaman user dashboard
-            header("Location: http://localhost/basdat/dashboard.php");
+            header("Location: http://localhost/basdat/homepage/home1.php");
         }
     } else {
         echo "<center><h1>Email atau Password anda salah. Silahkan Coba Login Kembali.</h1>
